@@ -38,37 +38,45 @@ def sort_by_cohort(filename):
     # made lists for all but all_students. 
     #we need to alphabetize and create list of list for all_students
 
-    all_students = []
     winter_15 = []
     spring_15 = []
     summer_15 = []
     tas = []
-    all_advisors = []
+    #student_cohorts = []
 
     cohort_data = open(filename)
-    for line in cohort_data:
-        person_data = line.split("|")
-        if person_data[3] != "":
-            all_advisors.append(person_data[3])
+    # for line in cohort_data:
+    #     person_data = line.split("|")
+        # if person_data[3] != "":
+        #     all_advisors.append(person_data[3])
 
-    all_advisors_set = set(all_advisors)
+    #all_advisors_set = set(all_advisors)
 
     for line in cohort_data:
-        #line.strip()
-        person_data = line.split("|")
+        person_data = line.rstrip()
+        person_data = person_data.split("|")
         full_name = person_data[0] + " " + person_data[1]
 
-        if person_data[4] == "Winter 2015\n":
+        if person_data[4] == "Winter 2015":
             winter_15.append(full_name)
-        elif person_data[4] == "Spring 2015\n":
+            if person_data[0] == "Denise":
+                tas.append(full_name)
+        elif person_data[4] == "Spring 2015":
             spring_15.append(full_name)
-        elif person_data[4] == "Summer 2015\n":
+        elif person_data[4] == "Summer 2015":
             summer_15.append(full_name)
-
-        if person_data[0] in all_advisors and person_data[4] != '':
+        elif person_data[4] != "":
             tas.append(full_name)
-   
-    
+
+        # if person_data[0] in all_advisors and person_data[4] != '':
+    winter_15.sort()
+    spring_15.sort()
+    summer_15.sort()
+    tas.sort()    #     tas.append(full_name)
+
+
+    all_students = [winter_15, spring_15, summer_15, tas]
+    print all_students
     return all_students
 
 
