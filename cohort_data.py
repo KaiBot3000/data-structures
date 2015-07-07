@@ -72,46 +72,58 @@ def sort_by_cohort(filename):
     winter_15.sort()
     spring_15.sort()
     summer_15.sort()
-    tas.sort()    #     tas.append(full_name)
-
+    tas.sort()   
 
     all_students = [winter_15, spring_15, summer_15, tas]
-    print all_students
+
     return all_students
 
 
 sort_by_cohort("cohort_data.txt")
 
-# def students_by_house(filename):
-#     """TODO: Sort students by house.
+def students_by_house(filename):
+    """TODO: Sort students by house.
 
-#     Iterate over the data to create a list for each house, and sort students
-#     into their appropriate houses by last name. Sort TAs into a list called "tas".
-#     Return all lists in one list of lists.
-#         ex. hufflepuff = ["Gaikwad", "Le", "..." ]
-#         ex. tas = ["Bryant", "Lefevre", "..."]
-#         ex. houses_tas = [ hufflepuff, 
-#                         gryffindor, 
-#                         ravenclaw, 
-#                         slytherin, 
-#                         dumbledores_army,
-#                         order_of_the_phoenix,
-#                         tas 
-#             ]
-#     """
+    Iterate over the data to create a list for each house, and sort students
+    into their appropriate houses by last name. Sort TAs into a list called "tas".
+    Return all lists in one list of lists.
+        ex. hufflepuff = ["Gaikwad", "Le", "..." ]
+        ex. tas = ["Bryant", "Lefevre", "..."]
+        ex. houses_tas = [ hufflepuff, 
+                        gryffindor, 
+                        ravenclaw, 
+                        slytherin, 
+                        dumbledores_army,
+                        order_of_the_phoenix,
+                        tas 
+            ]
+    """
+    cohort_data = open("cohort_data.txt")
 
-#     all_students = []
-#     gryffindor = []
-#     hufflepuff = []
-#     slytherin = []
-#     dumbledores_army = []
-#     order_of_the_phoenix = []
-#     ravenclaw = []
-#     tas = []
+    all_students = sort_by_cohort(filename)
+    fullname_ta_list = all_students[3]
+    ta_last_names = []
+    for name in fullname_ta_list:
+        last = name.split(" ")
+        ta_last_names.append(last[1])
 
-#     # Code goes here
+            
 
-#     return all_students
+    for line in cohort_data:
+        person_data = line.rstrip()
+        person_data = person_data.split("|")
+
+    gryffindor = []
+    hufflepuff = []
+    slytherin = []
+    dumbledores_army = []
+    order_of_the_phoenix = []
+    ravenclaw = []
+
+
+    # Code goes here
+
+    return all_students
 
 
 # def all_students_tuple_list(filename):
